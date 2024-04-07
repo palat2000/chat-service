@@ -48,7 +48,6 @@ app.post("/webhook", line.middleware(lineConfig), async (req, res) => {
 });
 
 const handleEvent = async (event) => {
-  console.log(event);
   if (event.type !== "message" || event.message.type !== "text") {
     return null;
   }
@@ -70,7 +69,11 @@ const handleEvent = async (event) => {
   }
   if (receiveText.includes("หาเพลง")) {
     const splitText = receiveText.split(" ");
-    if (splitText.length < 2 || !splitText[1]) {
+    if (
+      splitText.length < 2 ||
+      !splitText[0].contains("หาเพลง") ||
+      !splitText[1]
+    ) {
       return null;
     }
     const source = event.source;
