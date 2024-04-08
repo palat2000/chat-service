@@ -71,7 +71,7 @@ const handleEvent = async (event) => {
     const splitText = receiveText.split(" ");
     if (
       splitText.length < 2 ||
-      !splitText[0].contains("หาเพลง") ||
+      !splitText[0].includes("หาเพลง") ||
       !splitText[1]
     ) {
       return null;
